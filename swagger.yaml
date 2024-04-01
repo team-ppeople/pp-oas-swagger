@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: PP REST API Docs
+  description: |-
+    PP REST API Docs
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.0
+tags: []
+paths: {}
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header
