@@ -36,7 +36,7 @@ paths:
     post:
       tags:
       - "pet"
-      summary: "uploads an image"
+      summary: "uploads an images"
       description: ""
       operationId: "uploadFile"
       consumes:
