@@ -578,8 +578,9 @@ paths:
                       post:
                         type: object
                         properties:
-                          user:
+                          createdUser:
                             type: object
+                            description: 게시글 작성자
                             properties:
                               id:
                                 type: integer
@@ -629,6 +630,21 @@ paths:
                             type: integer
                             description: 댓글 수
                             example: 39
+                          userActionHistory:
+                            type: object
+                            description: 게시글에 대한 유저의 이력
+                            properties:
+                              thumbsUpped:
+                                type: boolean
+                                description: 좋아요 여부
+                                example: true
+                              reported:
+                                type: boolean
+                                description: 신고 여부
+                                example: false
+                            required:
+                              - thumbsUpped
+                              - reported
                         required:
                           - user
                           - id
@@ -638,6 +654,7 @@ paths:
                           - create_date
                           - thumbsUpCount
                           - commentCount
+                          - userActionHistory
                     required:
                       - post
                 required:
