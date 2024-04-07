@@ -363,9 +363,9 @@ paths:
             type: integer
           description: |-
             조회 갯수
-            - 기본 값 ?
-            - 최소 값 ?
-            - 최대 값 ?
+            - 기본 값 20
+            - 최소 값 10
+            - 최대 값 100
         - in: query
           name: lastId
           schema:
@@ -441,9 +441,9 @@ paths:
             type: integer
           description: |-
             조회 갯수
-            - 기본 값 ?
-            - 최소 값 ?
-            - 최대 값 ?
+            - 기본 값 20
+            - 최소 값 10
+            - 최대 값 100
         - in: query
           name: lastId
           schema:
@@ -744,9 +744,9 @@ paths:
             type: integer
           description: |-
             조회 갯수
-            - 기본 값 ?
-            - 최소 값 ?
-            - 최대 값 ?
+            - 기본 값 20
+            - 최소 값 10
+            - 최대 값 100
         - in: query
           name: lastId
           schema:
@@ -859,9 +859,9 @@ paths:
             type: integer
           description: |-
             조회 갯수
-            - 기본 값 ?
-            - 최소 값 ?
-            - 최대 값 ?
+            - 기본 값 20
+            - 최소 값 10
+            - 최대 값 100
         - in: query
           name: lastId
           schema:
@@ -936,9 +936,9 @@ paths:
             type: integer
           description: |-
             조회 갯수
-            - 기본 값 ?
-            - 최소 값 ?
-            - 최대 값 ?
+            - 기본 값 20
+            - 최소 값 10
+            - 최대 값 100
         - in: query
           name: lastId
           schema:
