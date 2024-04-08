@@ -132,7 +132,7 @@ paths:
                     token_type: Bearer
                     expires_in: 299
 
-  /api/v1/presigned/upload-url:
+  /api/v1/presigned/upload-urls:
     post:
       security:
         - bearerToken: [ ]
@@ -152,31 +152,45 @@ paths:
             schema:
               type: object
               properties:
-                fileUploadRequestType:
-                  type: string
-                  description: |-
-                    파일 업로드 유형
-                    - USER_PROFILE_IMAGE
-                    - POST_IMAGE
-                  example: USER_PROFILE_IMAGE
-                fileContentLength:
-                  type: integer
-                  description: |-
-                    Content-Length(bytes)
-                    - USER_PROFILE_IMAGE: 최대 ? bytes
-                    - POST_IMAGE: 최대 ? bytes
-                  example: 500000
-                fileContentType:
-                  type: string
-                  description: |-
-                    Content-Type
-                    - USER_PROFILE_IMAGE: image/*
-                    - POST_IMAGE: image/*
-                  example: image/png
+                presignedUploadUrlRequests:
+                  type: array
+                  description: 파일 업로드 url 서명 요청
+                  minimum: 1
+                  maximum: 10
+                  items:
+                    type: object
+                    properties:
+                      fileUploadRequestType:
+                        type: string
+                        description: |-
+                          파일 업로드 유형
+                          - USER_PROFILE_IMAGE
+                          - POST_IMAGE
+                      fileContentLength:
+                        type: integer
+                        description: |-
+                          Content-Length(bytes)
+                          - USER_PROFILE_IMAGE: 최대 ? bytes
+                          - POST_IMAGE: 최대 ? bytes
+                      fileContentType:
+                        type: string
+                        description: |-
+                          Content-Type
+                          - USER_PROFILE_IMAGE: image/*
+                          - POST_IMAGE: image/*
+                    required:
+                      - fileUploadRequestType
+                      - fileContentLength
+                      - fileContentType
+                  example:
+                    - fileUploadRequestType: USER_PROFILE_IMAGE
+                      fileContentLength: 500000
+                      fileContentType: image/png
+                    - fileUploadRequestType: POST_IMAGE
+                      fileContentLength: 650000
+                      fileContentType: image/jpeg
               required:
-                - fileUploadRequestType
-                - fileContentLength
-                - fileContentType
+                - presignedUploadUrlRequests
       responses:
         200:
           description: ''
@@ -188,22 +202,34 @@ paths:
                   data:
                     type: object
                     properties:
-                      fileUploadId:
-                        type: integer
-                        description: 파일 업로드 id
-                        example: 1
-                      presignedUploadUrl:
-                        type: string
-                        description: 서명된 파일 업로드 url
-                        example: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/example.png?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH4aDmFwLW5vcnRoZWFzdC0yIkYwRAIgOF4z5YJLMI1YQsfDsOu3ItBFpvDAMWHNT%2BJFqA2EHzQCICSHWV3QpnyDPwfp6eGWYmrBl5NMZn9JC%2FaOUhMlhv2OKpIDCKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNzMwMzM1NTk0MTg2IgzvG6wQSpimxC7HWRsq5gK%2BszFeBYYK3QvsZZ40%2Fm1EPdSzYWmasXWgjM2879zl7Cp66x%2F8HRa6BCQSsyMdP9gMPn5MifObVLqFS8owu7e4uH68tbfmSF1ipFwr%2BMl3DS5DQUCTaRraoi%2F2PTTEHRHtA1dbE6XfXttkRQYkaEIKvR3X44sMlqI2rKOQtpFU5g5%2BzEG7NQHeIbgPMThPBXT%2Bu8IgqOaKyqaKLTTjjUcCBhoYaToDeOaZbFIElmdLADswM34ID5jCt3jPOGlBX04GI8X%2BXbtzyIeDH2ihmWDejpGv8%2BUx9v%2F%2BHX80PnZkUUyz1f8KjweBETyJHiZTFxxtJ6nG3Y%2Bs0LVgLshHWa5Md1HG11ASlNFT%2BSuKzPfQqiohAzeP%2Ff7CLFUlDQmB2kcNKwGAFgDUmMF%2FNC1ePM%2BiwL%2F6BGtbJu9gbu6PHj0%2FuUGQuKar0xd5azhWxM9bpZ2Gn7YBGbAPwVUsS1YEYr0OMgzNEr9sMK6UwLAGOrQCPN2SL1x7N%2FrRXPUw98if3xLq9iLosA4oPUCGxVzzGUX2L88Fq2l4qJTRo85qI%2Fc%2BEWz7WBufa2XsnMMMh8lXADb1UkLxLEOHr5pIWUroWM0uzGp%2FuvpoMmEFZieKu9cGrC%2FqOFo%2BGL3lN%2B9vZcEb3w2SpeImGDdataWOUB3njXoNhYx8Oyxv87aWhXQjIp96PUhmVaVPOkfMY%2FySz97TqXTxNh7gSW95ch2QJa1xmR%2FXHBKB7HuYEWGODNuEa8PSARBeKpXy7S1WoHgPcCHCzmrVcGMA6H9nfSxnBzwKqR%2FahzbqbEUIa5kXYLwll%2FQAI%2BNKhyFya9HzDl5f9sAXdt1hfQ9dwM2WdDB4mQxnESgPsBe%2F4MtXr%2Btvs8qqD0XLeu35c89wjDOb4osHDJLevfkPvPE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240405T142839Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Credential=ASIA2UC3EY3FFAXNMRH5%2F20240405%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=6e710f43b229be2a5b63e543c9d61b2dbc66bd2b5035b55c207cce060eacd480
-                      fileUrl:
-                        type: string
-                        description: 파일 url
-                        example: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/example.png
+                      presignedUploadUrlResponses:
+                        type: array
+                        description: 파일 업로드 url 서명 응답
+                        items:
+                          type: object
+                          properties:
+                            fileUploadId:
+                              type: integer
+                              description: 파일 업로드 id
+                            presignedUploadUrl:
+                              type: string
+                              description: 서명된 파일 업로드 url
+                            fileUrl:
+                              type: string
+                              description: 파일 url
+                          required:
+                            - fileUploadId
+                            - presignedUploadUrl
+                            - fileUrl
+                        example:
+                          - fileUploadId: 1
+                            presignedUploadUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/example.png?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH4aDmFwLW5vcnRoZWFzdC0yIkYwRAIgOF4z5YJLMI1YQsfDsOu3ItBFpvDAMWHNT%2BJFqA2EHzQCICSHWV3QpnyDPwfp6eGWYmrBl5NMZn9JC%2FaOUhMlhv2OKpIDCKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNzMwMzM1NTk0MTg2IgzvG6wQSpimxC7HWRsq5gK%2BszFeBYYK3QvsZZ40%2Fm1EPdSzYWmasXWgjM2879zl7Cp66x%2F8HRa6BCQSsyMdP9gMPn5MifObVLqFS8owu7e4uH68tbfmSF1ipFwr%2BMl3DS5DQUCTaRraoi%2F2PTTEHRHtA1dbE6XfXttkRQYkaEIKvR3X44sMlqI2rKOQtpFU5g5%2BzEG7NQHeIbgPMThPBXT%2Bu8IgqOaKyqaKLTTjjUcCBhoYaToDeOaZbFIElmdLADswM34ID5jCt3jPOGlBX04GI8X%2BXbtzyIeDH2ihmWDejpGv8%2BUx9v%2F%2BHX80PnZkUUyz1f8KjweBETyJHiZTFxxtJ6nG3Y%2Bs0LVgLshHWa5Md1HG11ASlNFT%2BSuKzPfQqiohAzeP%2Ff7CLFUlDQmB2kcNKwGAFgDUmMF%2FNC1ePM%2BiwL%2F6BGtbJu9gbu6PHj0%2FuUGQuKar0xd5azhWxM9bpZ2Gn7YBGbAPwVUsS1YEYr0OMgzNEr9sMK6UwLAGOrQCPN2SL1x7N%2FrRXPUw98if3xLq9iLosA4oPUCGxVzzGUX2L88Fq2l4qJTRo85qI%2Fc%2BEWz7WBufa2XsnMMMh8lXADb1UkLxLEOHr5pIWUroWM0uzGp%2FuvpoMmEFZieKu9cGrC%2FqOFo%2BGL3lN%2B9vZcEb3w2SpeImGDdataWOUB3njXoNhYx8Oyxv87aWhXQjIp96PUhmVaVPOkfMY%2FySz97TqXTxNh7gSW95ch2QJa1xmR%2FXHBKB7HuYEWGODNuEa8PSARBeKpXy7S1WoHgPcCHCzmrVcGMA6H9nfSxnBzwKqR%2FahzbqbEUIa5kXYLwll%2FQAI%2BNKhyFya9HzDl5f9sAXdt1hfQ9dwM2WdDB4mQxnESgPsBe%2F4MtXr%2Btvs8qqD0XLeu35c89wjDOb4osHDJLevfkPvPE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240405T142839Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Credential=ASIA2UC3EY3FFAXNMRH5%2F20240405%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=6e710f43b229be2a5b63e543c9d61b2dbc66bd2b5035b55c207cce060eacd480
+                            fileUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/example.png
+                          - fileUploadId: 2
+                            presignedUploadUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/example2.png?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH4aDmFwLW5vcnRoZWFzdC0yIkYwRAIgOF4z5YJLMI1YQsfDsOu3ItBFpvDAMWHNT%2BJFqA2EHzQCICSHWV3QpnyDPwfp6eGWYmrBl5NMZn9JC%2FaOUhMlhv2OKpIDCKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNzMwMzM1NTk0MTg2IgzvG6wQSpimxC7HWRsq5gK%2BszFeBYYK3QvsZZ40%2Fm1EPdSzYWmasXWgjM2879zl7Cp66x%2F8HRa6BCQSsyMdP9gMPn5MifObVLqFS8owu7e4uH68tbfmSF1ipFwr%2BMl3DS5DQUCTaRraoi%2F2PTTEHRHtA1dbE6XfXttkRQYkaEIKvR3X44sMlqI2rKOQtpFU5g5%2BzEG7NQHeIbgPMThPBXT%2Bu8IgqOaKyqaKLTTjjUcCBhoYaToDeOaZbFIElmdLADswM34ID5jCt3jPOGlBX04GI8X%2BXbtzyIeDH2ihmWDejpGv8%2BUx9v%2F%2BHX80PnZkUUyz1f8KjweBETyJHiZTFxxtJ6nG3Y%2Bs0LVgLshHWa5Md1HG11ASlNFT%2BSuKzPfQqiohAzeP%2Ff7CLFUlDQmB2kcNKwGAFgDUmMF%2FNC1ePM%2BiwL%2F6BGtbJu9gbu6PHj0%2FuUGQuKar0xd5azhWxM9bpZ2Gn7YBGbAPwVUsS1YEYr0OMgzNEr9sMK6UwLAGOrQCPN2SL1x7N%2FrRXPUw98if3xLq9iLosA4oPUCGxVzzGUX2L88Fq2l4qJTRo85qI%2Fc%2BEWz7WBufa2XsnMMMh8lXADb1UkLxLEOHr5pIWUroWM0uzGp%2FuvpoMmEFZieKu9cGrC%2FqOFo%2BGL3lN%2B9vZcEb3w2SpeImGDdataWOUB3njXoNhYx8Oyxv87aWhXQjIp96PUhmVaVPOkfMY%2FySz97TqXTxNh7gSW95ch2QJa1xmR%2FXHBKB7HuYEWGODNuEa8PSARBeKpXy7S1WoHgPcCHCzmrVcGMA6H9nfSxnBzwKqR%2FahzbqbEUIa5kXYLwll%2FQAI%2BNKhyFya9HzDl5f9sAXdt1hfQ9dwM2WdDB4mQxnESgPsBe%2F4MtXr%2Btvs8qqD0XLeu35c89wjDOb4osHDJLevfkPvPE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240405T142839Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Credential=ASIA2UC3EY3FFAXNMRH5%2F20240405%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=6e710f43b229be2a5b63e543c9d61b2dbc66bd2b5035b55c207cce060eacd480
+                            fileUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/example2.png
                     required:
-                      - fileUploadId
-                      - presignedUploadUrl
-                      - fileUrl
+                      - presignedUploadUrlResponses
                 required:
                   - data
 
