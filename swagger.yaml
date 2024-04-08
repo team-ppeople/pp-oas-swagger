@@ -164,26 +164,32 @@ paths:
                         type: string
                         description: |-
                           파일 업로드 유형
-                          - USER_PROFILE_IMAGE
+                          - PROFILE_IMAGE
                           - POST_IMAGE
                       fileContentLength:
                         type: integer
                         description: |-
                           Content-Length(bytes)
-                          - USER_PROFILE_IMAGE: 최대 ? bytes
-                          - POST_IMAGE: 최대 ? bytes
+                          - PROFILE_IMAGE: 최대 1048576 bytes(1mb)
+                          - POST_IMAGE: 최대 1048576 bytes(1mb)
                       fileContentType:
                         type: string
                         description: |-
                           Content-Type
-                          - USER_PROFILE_IMAGE: image/*
-                          - POST_IMAGE: image/*
+                          - PROFILE_IMAGE:
+                            - image/gif
+                            - image/png
+                            - image/jpeg
+                          - POST_IMAGE: 
+                            - image/gif
+                            - image/png
+                            - image/jpeg
                     required:
                       - fileUploadRequestType
                       - fileContentLength
                       - fileContentType
                   example:
-                    - fileUploadRequestType: USER_PROFILE_IMAGE
+                    - fileUploadRequestType: PROFILE_IMAGE
                       fileContentLength: 500000
                       fileContentType: image/png
                     - fileUploadRequestType: POST_IMAGE
