@@ -15,7 +15,7 @@ tags:
   - name: 커뮤니티
     description: 커뮤니티 API
   - name: 기타
-    description: 공지사항 및 약관 API
+    description: 공지사항 API
 
 paths:
   /oauth2/token:
@@ -991,73 +991,6 @@ paths:
                             create_date: 2024.02.12
                     required:
                       - notices
-                required:
-                  - data
-
-  /api/v1/terms:
-    get:
-      tags:
-        - 기타
-      summary: 약관 조회
-      description: |-
-        약관 및 정책 목록을 조회합니다.
-        
-        최근 등록 내림차 순으로 정렬되어 조회됩니다.
-      parameters:
-        - in: query
-          name: limit
-          schema:
-            type: integer
-          description: |-
-            조회 갯수
-            - 기본 값 20
-            - 최소 값 10
-            - 최대 값 100
-        - in: query
-          name: lastId
-          schema:
-            type: integer
-          description: |-
-            마지막 조회 약관 id
-            - 만약 100을 입력했다면 다음 조회는 99부터 입니다.
-      responses:
-        200:
-          description: '200'
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      terms:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                              description: 약관 id
-                            title:
-                              type: string
-                              description: 제목
-                            content:
-                              type: string
-                              description: 내용
-                          required:
-                            - id
-                            - title
-                            - content
-                        example:
-                          - id: 2
-                            title: 개인정보 처리 방침
-                            content: 이거 보여주려고 어그로 끌었습니다.
-                          - id: 1
-                            title: 개인정보 처리 방침
-                            content: 이거 보여주려고 어그로 끌었습니다.
-                    required:
-                      - terms
                 required:
                   - data
 
