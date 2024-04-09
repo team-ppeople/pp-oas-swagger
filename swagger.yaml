@@ -239,6 +239,48 @@ paths:
                 required:
                   - data
 
+  /api/v1/oauth2/{client}/users/registered:
+    get:
+      security:
+        - 3rdPartyBearerToken: []
+      tags:
+        - 유저
+      summary: Oauth 로그인 회원 등록 여부 확인
+      description: |-
+        Oauth 로그인 회원의 등록 여부를 확인합니다.
+      parameters:
+        - in: path
+          name: client
+          schema:
+            type: string
+            enum:
+              - kakao
+              - apple
+          required: true
+          description: |-
+            클라이언트
+              - kakao
+              - apple
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      isRegistered:
+                        type: boolean
+                        description: 이미 등록되었는지 여부
+                        example: false
+                    required:
+                      - isRegistered
+                required:
+                  - data
+
   /api/v1/users/{userId}:
     patch:
       security:
@@ -1024,5 +1066,10 @@ components:
     bearerToken:
       type: http
       scheme: bearer
+      description: JWT 서명 토큰(access_token)
+    3rdPartyBearerToken:
+      type: http
+      scheme: bearer
+      description: 3rd-party JWT 서명 토큰(id_token)
 
 servers: [ ]
