@@ -61,7 +61,7 @@ paths:
                   example: kauth.kakao.com
                 client_assertion:
                   type: string
-                  description: JWT 서명 토큰(id_token)
+                  description: 3rd-party JWT 서명 토큰(id_token)
                 client_assertion_type:
                   type: string
                   description: urn:ietf:params:oauth:client-assertion-type:jwt-bearer 고정
@@ -240,9 +240,7 @@ paths:
                   - data
 
   /api/v1/oauth2/{client}/users/registered:
-    get:
-      security:
-        - 3rdPartyBearerToken: []
+    post:
       tags:
         - 유저
       summary: Oauth 로그인 회원 등록 여부 확인
@@ -261,6 +259,18 @@ paths:
             클라이언트
               - kakao
               - apple
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+                  description: 3rd-party JWT 서명 토큰(id_token)
+              required:
+                - idToken
       responses:
         200:
           description: ''
@@ -1000,9 +1010,5 @@ components:
       type: http
       scheme: bearer
       description: JWT 서명 토큰(access_token)
-    3rdPartyBearerToken:
-      type: http
-      scheme: bearer
-      description: 3rd-party JWT 서명 토큰(id_token)
 
 servers: [ ]
