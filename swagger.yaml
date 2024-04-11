@@ -31,6 +31,7 @@ paths:
         - grant_type(Required): client_credentials
         - client_assertion(Required): 3rd-party JWT 서명 토큰(id_token)
         - client_assertion_type(Required): urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+        - authorization_code(Required only apple case): 인가 코드
         - scope(Optional): user.read user.write
         
         엑세스 토큰이 만료되면 재발급 토큰을 전달하여 엑세스 토큰과 재발급 토큰을 재발급합니다.
@@ -66,6 +67,9 @@ paths:
                   type: string
                   description: urn:ietf:params:oauth:client-assertion-type:jwt-bearer 고정
                   example: urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+                authorization_code:
+                  type: string
+                  description: 인가 코드
                 scope:
                   type: string
                   description: |-
