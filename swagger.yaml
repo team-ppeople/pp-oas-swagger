@@ -397,6 +397,24 @@ paths:
       responses:
         200:
           description: ''
+    delete:
+      security:
+        - bearerToken: [ ]
+      tags:
+        - 유저
+      summary: 유저 탈퇴
+      description: |-
+        유저 정보를 삭제합니다.
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: integer
+          required: true
+          description: 유저 id
+      responses:
+        200:
+          description: ''
 
   /api/v1/users/{userId}/profiles:
     get:
@@ -404,7 +422,7 @@ paths:
         - bearerToken: [ ]
       tags:
         - 유저
-      summary: 유자 프로필 조회
+      summary: 유저 프로필 조회
       description: |-
         유저의 프로필 정보를 조회합니다.
       parameters:
