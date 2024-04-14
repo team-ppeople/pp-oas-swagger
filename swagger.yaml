@@ -480,27 +480,27 @@ paths:
                                 title:
                                   type: string
                                   description: 제목
-                                create_date:
+                                createDate:
                                   type: string
                                   description: 작성일
                               required:
                                 - id
                                 - thumbnailUrl
                                 - title
-                                - create_date
+                                - createDate
                             example:
                               - id: 3
                                 thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                                 title: 바다 거북이 본 날
-                                create_date: 2024.03.30
+                                createDate: 2024.03.30
                               - id: 2
                                 thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                                 title: 오늘 우리집에 햄스터를...
-                                create_date: 2024.03.30
+                                createDate: 2024.03.30
                               - id: 1
                                 thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                                 title: 문서 적는게 원래 이렇게 힘든...
-                                create_date: 2024.02.12
+                                createDate: 2024.02.12
                         required:
                           - id
                           - nickname
@@ -572,26 +572,26 @@ paths:
                             title:
                               type: string
                               description: 제목
-                            create_date:
+                            createDate:
                               type: string
                           required:
                             - id
                             - thumbnailUrl
                             - title
-                            - create_date
+                            - createDate
                         example:
                           - id: 3
                             thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                             title: 바다 거북이 본 날
-                            create_date: 2024.03.30
+                            createDate: 2024.03.30
                           - id: 2
                             thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                             title: 오늘 우리집에 햄스터를...
-                            create_date: 2024.03.30
+                            createDate: 2024.03.30
                           - id: 1
                             thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                             title: 문서 적는게 원래 이렇게 힘든...
-                            create_date: 2024.02.12
+                            createDate: 2024.02.12
                     required:
                       - posts
                 required:
@@ -650,27 +650,27 @@ paths:
                             title:
                               type: string
                               description: 제목
-                            create_date:
+                            createDate:
                               type: string
                               description: 작성일
                           required:
                             - id
                             - thumbnailUrl
                             - title
-                            - create_date
+                            - createDate
                         example:
                           - id: 3
                             thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                             title: 바다 거북이 본 날
-                            create_date: 2024.03.30
+                            createDate: 2024.03.30
                           - id: 2
                             thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                             title: 오늘 우리집에 햄스터를...
-                            create_date: 2024.03.30
+                            createDate: 2024.03.30
                           - id: 1
                             thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                             title: 문서 적는게 원래 이렇게 힘든...
-                            create_date: 2024.02.12
+                            createDate: 2024.02.12
                     required:
                       - posts
                 required:
@@ -792,7 +792,7 @@ paths:
                             type: string
                             description: 내용
                             example: 바다 거북이 본 날
-                          create_date:
+                          createDate:
                             type: string
                             description: 작성일
                             example: 2024.03.30
@@ -825,7 +825,7 @@ paths:
                           - postImageUrls
                           - title
                           - content
-                          - create_date
+                          - createDate
                           - thumbsUpCount
                           - commentCount
                           - userActionHistory
@@ -1068,27 +1068,27 @@ paths:
                             content:
                               type: string
                               description: 내용
-                            create_date:
+                            createDate:
                               type: string
                               description: 작성일
                           required:
                             - id
                             - title
                             - content
-                            - create_date
+                            - createDate
                         example:
                           - id: 3
                             title: 더 좋은 서비스 제공을 위해 앱 최소 지원 버전이 변경될 예정이에요.
                             content: 사실 구라입니다 이거 보여주려고 어그로 끌었습니다.
-                            create_date: 2024.03.30
+                            createDate: 2024.03.30
                           - id: 2
                             title: 더 좋은 서비스 제공을 위해 앱 최소 지원 버전이 변경될 예정이에요.
                             content: 사실 구라입니다 이거 보여주려고 어그로 끌었습니다.
-                            create_date: 2024.03.30
+                            createDate: 2024.03.30
                           - id: 1
                             title: 더 좋은 서비스 제공을 위해 앱 최소 지원 버전이 변경될 예정이에요.
                             content: 사실 구라입니다 이거 보여주려고 어그로 끌었습니다.
-                            create_date: 2024.02.12
+                            createDate: 2024.02.12
                     required:
                       - notices
                 required:
