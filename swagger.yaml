@@ -24,9 +24,9 @@ paths:
         - 인증
       summary: 토큰 발급
       description: |-
-        API 사용을 위한 엑세스 토큰과 엑세스 토큰을 갱신할 수 있는 재발급 토큰을 발급합니다.
+        API 사용을 위한 엑세스 토큰과 엑세스 토큰을 갱신할 수 있는 리프레시 토큰을 발급합니다.
         
-        kakao, apple 로그인 후, 발급된 3rd-party JWT 서명 토큰(id_token)을 전달하여 엑세스 토큰과 재발급 토큰을 발급합니다.
+        kakao, apple 로그인 후, 발급된 3rd-party JWT 서명 토큰(id_token)을 전달하여 엑세스 토큰과 리프레시 토큰을 발급합니다.
         - client_id(Required): kauth.kakao.com 또는 appleid.apple.com
         - grant_type(Required): client_credentials
         - client_assertion(Required): 3rd-party JWT 서명 토큰(id_token)
@@ -34,10 +34,10 @@ paths:
         - authorization_code(Required only apple case): 인가 코드
         - scope(Optional): user.read user.write
         
-        엑세스 토큰이 만료되면 재발급 토큰을 전달하여 엑세스 토큰과 재발급 토큰을 재발급합니다.
+        엑세스 토큰이 만료되면 리프레시 토큰을 전달하여 엑세스 토큰과 리프레시 토큰을 재발급합니다.
         - client_id(Required): kauth.kakao.com 또는 appleid.apple.com
         - grant_type(Required): refresh_token
-        - refresh_token(Required): 재발급 토큰
+        - refresh_token(Required): 리프레시 토큰
         - scope(Optional): user.read user.write
         
         아래는 발급된 PP API 접근 엑세스 토큰(JWT) claims 예시입니다.
@@ -107,7 +107,7 @@ paths:
                   example: user.read user.write
                 refresh_token:
                   type: string
-                  description: 재발급 토큰
+                  description: 리프레시 토큰
               required:
                 - grant_type
                 - client_id
@@ -124,7 +124,7 @@ paths:
                     description: 엑세스 토큰
                   refresh_token:
                     type: string
-                    description: 재발급 토큰
+                    description: 리프레시 토큰
                   scope:
                     type: string
                     description: |-
