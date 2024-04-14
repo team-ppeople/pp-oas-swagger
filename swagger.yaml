@@ -39,6 +39,31 @@ paths:
         - grant_type(Required): refresh_token
         - refresh_token(Required): 재발급 토큰
         - scope(Optional): user.read user.write
+        
+        아래는 발급된 PP API 접근 엑세스 토큰(JWT) claims 예시입니다.
+        ```json
+        {
+          "sub": "1",
+          "aud": "https://pp-api.kro.kr",
+          "nbf": 1712984735,
+          "scope": [
+            "user.read",
+            "user.write"
+          ],
+          "iss": "https://pp-api.kro.kr",
+          "exp": 1712985035,
+          "iat": 1712984735,
+          "jti": "e82b8142-2018-455d-92d8-149bce81ec7f"
+        }
+        ```
+        - sub(Required): 토큰을 발급한 유저를 식별할 수 있는 id(userId)
+        - aub(Required): 토큰의 대상자
+        - nbf(Required): 토큰의 활성화 날짜
+        - scope(Optional): 토큰으로 리소스에 접근할 수 있는 권한 범위
+        - iss(Required): 토큰의 발급자
+        - exp(Required): 토큰의 만료시간
+        - iat(Required): 토큰이 발급된 시간
+        - jti(Required): JWT 서명 키페어를 식별할 수 있는 id
       requestBody:
         required: true
         content:
@@ -73,7 +98,7 @@ paths:
                 scope:
                   type: string
                   description: |-
-                    허용 리소스
+                    권한 범위
                     - user.read
                     - user.write
                     - post.read
@@ -103,7 +128,7 @@ paths:
                   scope:
                     type: string
                     description: |-
-                      허용 리소스
+                      권한 범위
                       - user.read
                       - user.write
                       - post.read
@@ -135,6 +160,49 @@ paths:
                     scope: user.read user.write
                     token_type: Bearer
                     expires_in: 299
+
+  /oauth2/revoke:
+    post:
+      tags:
+        - 인증
+      summary: 토큰 무효화
+      description: |-
+        PP 서버 API 사용을 위한 엑세스 토큰 또는 리프레시 토큰을 무효화합니다.
+
+        - client_id(Required): kauth.kakao.com 또는 appleid.apple.com
+        - token(Required): access_token 또는 refresh_token
+        - token_type_hint(Optional): access_token 또는 refresh_token
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  description: |-
+                    클라이언트 id
+                    - kauth.kakao.com
+                    - appleid.apple.com
+                  example: kauth.kakao.com
+                token:
+                  type: string
+                  description: 무효화 대상 토큰
+                token_type_hint:
+                  type: string
+                  description: |-
+                    토큰 타입
+                    - access_token
+                    - refresh_token
+                  example: refresh_token
+              required:
+                - client_id
+                - token
+                - token_type_hint
+      responses:
+        200:
+          description: ''
 
   /api/v1/presigned/upload-urls:
     post:
