@@ -1,9 +1,9 @@
 openapi: 3.0.3
 info:
-  version: "0.0.0"
+  version: "1.0.0"
   title: PP REST API Docs
   description: |-
-    해당 문서는 현재 초안으로 생성한 임시 문서이며 프론트/백엔드 개발자의 피드백 및 협의가 필요합니다.
+    해당 문서는 PP REST API 명세애 대한 문서입니다.
 
 tags:
   - name: 인증
@@ -160,6 +160,18 @@ paths:
                     scope: user.read user.write
                     token_type: Bearer
                     expires_in: 299
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Oauth2ErrorResponse'
+              examples:
+                Oauth2ErrorInvalidRequestExample:
+                  $ref: '#/components/examples/Oauth2ErrorInvalidRequestExample'
+                Oauth2ErrorServerErrorExample:
+                  $ref: '#/components/examples/Oauth2ErrorServerErrorExample'
+
 
   /oauth2/revoke:
     post:
@@ -203,6 +215,17 @@ paths:
       responses:
         200:
           description: ''
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Oauth2ErrorResponse'
+              examples:
+                Oauth2ErrorInvalidRequestExample:
+                  $ref: '#/components/examples/Oauth2ErrorInvalidRequestExample'
+                Oauth2ErrorServerErrorExample:
+                  $ref: '#/components/examples/Oauth2ErrorServerErrorExample'
 
   /api/v1/presigned/upload-urls:
     post:
@@ -310,6 +333,24 @@ paths:
                       - presignedUploadUrlResponses
                 required:
                   - data
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/oauth2/{client}/users/registered:
     post:
@@ -362,6 +403,25 @@ paths:
                       - isRegistered
                 required:
                   - data
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
+
 
   /api/v1/users/{userId}:
     patch:
@@ -397,6 +457,24 @@ paths:
       responses:
         200:
           description: ''
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
     delete:
       security:
         - bearerToken: [ ]
@@ -415,6 +493,24 @@ paths:
       responses:
         200:
           description: ''
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/users/{userId}/profiles:
     get:
@@ -512,6 +608,24 @@ paths:
                       - user
                 required:
                   - data
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/users/{userId}/posts:
     get:
@@ -596,6 +710,24 @@ paths:
                       - posts
                 required:
                   - data
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/posts:
     get:
@@ -675,6 +807,24 @@ paths:
                       - posts
                 required:
                   - data
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
     post:
       security:
@@ -721,6 +871,24 @@ paths:
               schema:
                 type: string
               description: Location
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/posts/{postId}:
     get:
@@ -833,6 +1001,24 @@ paths:
                       - post
                 required:
                   - data
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/posts/{postId}/report:
     post:
@@ -853,6 +1039,24 @@ paths:
       responses:
         200:
           description: '200'
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/posts/{postId}/thumbs-up:
     post:
@@ -873,6 +1077,24 @@ paths:
       responses:
         200:
           description: '200'
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/posts/{postId}/thumbs-sideways:
     post:
@@ -893,6 +1115,24 @@ paths:
       responses:
         200:
           description: '200'
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/posts/{postId}/comments:
     get:
@@ -957,6 +1197,25 @@ paths:
                       - comments
                 required:
                   - data
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
+
     post:
       security:
         - bearerToken: [ ]
@@ -988,6 +1247,24 @@ paths:
       responses:
         200:
           description: '200'
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/posts/{postId}/comments/{commentId}/report:
     get:
@@ -1014,6 +1291,24 @@ paths:
       responses:
         200:
           description: '200'
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/notices:
     get:
@@ -1093,6 +1388,24 @@ paths:
                       - notices
                 required:
                   - data
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
 
 components:
   securitySchemes:
@@ -1101,4 +1414,95 @@ components:
       scheme: bearer
       description: JWT 서명 토큰(access_token)
 
-servers: [ ]
+  schemas:
+    Oauth2ErrorResponse:
+      type: object
+      externalDocs:
+        description: RFC-6749 Oauth2 error response
+        url: https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.2.1
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+        error_uri:
+          type: string
+          example: https://datatracker.ietf.org/doc/html/rfc6749#section-5.2
+      required:
+        - error
+    ProblemDetailErrorResponse:
+      type: object
+      externalDocs:
+        description: RFC-7807 problem detail error response
+        url: https://datatracker.ietf.org/doc/html/rfc7807#section-3.1
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        filedErrors:
+          type: array
+          description: 커스텀 에러
+          items:
+            type: object
+            properties:
+              detailMessage:
+                type: string
+                description: 상세 메시지
+              field:
+                type: string
+                description: 유효하지 않은 필드명
+              rejectedValue:
+                type: string
+                description: 유효하지 않은 값
+              bindingFailure:
+                type: string
+                description: 적용 여부
+              code:
+                type: string
+                description: 코드
+      required:
+        - type
+        - title
+        - detail
+        - instance
+
+  examples:
+    Oauth2ErrorInvalidRequestExample:
+      value:
+        error: invalid_request
+    Oauth2ErrorServerErrorExample:
+      value:
+        error: server_error
+        error_description: The token generator failed to generate the refresh token.
+        error_uri: https://datatracker.ietf.org/doc/html/rfc6749#section-5.2
+    ProblemDetailError4XXExample:
+      value:
+        type: about:blank
+        title: Bad Request
+        status: 400
+        detail: Invalid request content.
+        instance: /api/v1/example
+        fieldErrors:
+          detailMessage: asd
+          field: name
+          rejectedValue: null
+          bindingFailure: false
+          code: NotBlank
+    ProblemDetailError5XXExample:
+      value:
+        type: about:blank
+        title: Internal Server Error
+        status: 500
+        detail: Internal Server Error
+        instance: /api/v1/example
+
+servers:
+  - url: https://pp-api.kro.kr
+    description: PP Rest API Server
