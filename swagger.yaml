@@ -3,9 +3,11 @@ info:
   version: "1.0.0"
   title: PP REST API Docs
   description: |-
-    해당 문서는 PP REST API 명세애 대한 문서입니다.
+    해당 문서는 PP REST API 명세에 대한 문서입니다.
 
 tags:
+  - name: 배포된 API
+    description: 서버에 배포되어 사용 및 테스트 가능한 API
   - name: 인증
     description: 인증 API
   - name: 파일 업로드
@@ -22,6 +24,7 @@ paths:
     post:
       tags:
         - 인증
+        - 배포된 API
       summary: 토큰 발급
       description: |-
         API 사용을 위한 엑세스 토큰과 엑세스 토큰을 갱신할 수 있는 리프레시 토큰을 발급합니다.
@@ -177,6 +180,7 @@ paths:
     post:
       tags:
         - 인증
+        - 배포된 API
       summary: 토큰 무효화
       description: |-
         PP 서버 API 사용을 위한 엑세스 토큰 또는 리프레시 토큰을 무효화합니다.
@@ -356,6 +360,7 @@ paths:
     post:
       tags:
         - 유저
+        - 배포된 API
       summary: Oauth 로그인 회원 등록 여부 확인
       description: |-
         Oauth 로그인 회원의 등록 여부를 확인합니다.
