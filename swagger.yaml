@@ -1362,6 +1362,7 @@ paths:
     get:
       tags:
         - 기타
+        - 배포된 API
       summary: 공지사항 조회
       description: |-
         공지사항을 목록을 조회합니다.
