@@ -244,6 +244,9 @@ paths:
         자세한 내용은 외부 문서를 참조해주세요.
         - [AWS S3 Manual - Uploading Objects with presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html)
         - [The illustrated guide to S3 pre-signed URLs](https://fourtheorem.com/the-illustrated-guide-to-s3-pre-signed-urls/)
+        
+        API 사용에 필요한 권한(scope)
+        - file.write
       requestBody:
         required: true
         content:
@@ -437,6 +440,10 @@ paths:
       summary: 유저 정보 수정
       description: |-
         유저 정보를 수정합니다.
+        
+        API 사용에 필요한 권한(scope)
+        - user.read
+        - user.write
       parameters:
         - in: path
           name: userId
@@ -526,6 +533,10 @@ paths:
       summary: 유저 프로필 조회
       description: |-
         유저의 프로필 정보를 조회합니다.
+        
+        API 사용에 필요한 권한(scope)
+        - user.read
+        - post.read
       parameters:
         - in: path
           name: userId
@@ -643,6 +654,10 @@ paths:
         유저가 등록한 커뮤니티 게시글을 조회합니다.
         
         최근 등록 내림차 순으로 정렬되어 조회됩니다.
+        
+        API 사용에 필요한 권한(scope)
+        - user.read
+        - post.read
       parameters:
         - in: path
           name: userId
@@ -745,6 +760,9 @@ paths:
         커뮤니티에 등록된 유저의 게시글 목록을 조회합니다.
         
         최근 등록 내림차 순으로 정렬되어 조회됩니다.
+        
+        API 사용에 필요한 권한(scope)
+        - post.read
       parameters:
         - in: query
           name: limit
@@ -904,6 +922,9 @@ paths:
       summary: 커뮤니티 게시글 상세내용 조회
       description: |-
         커뮤니티에 등록된 유저의 게시글 상세내용을 조회합니다.
+        
+        API 사용에 필요한 권한(scope)
+        - post.read
       parameters:
         - in: path
           name: postId
@@ -1034,6 +1055,10 @@ paths:
       summary: 커뮤니티 게시글 신고
       description: |-
         커뮤니티에 등록된 유저의 게시글을 신고합니다.
+        
+        API 사용에 필요한 권한(scope)
+        - post.read
+        - post.write
       parameters:
         - in: path
           name: postId
@@ -1072,6 +1097,10 @@ paths:
       summary: 커뮤니티 게시글 좋아요
       description: |-
         커뮤니티에 등록된 유저의 게시글을 좋아합니다.
+        
+        API 사용에 필요한 권한(scope)
+        - post.read
+        - post.write
       parameters:
         - in: path
           name: postId
@@ -1110,6 +1139,10 @@ paths:
       summary: 커뮤니티 게시글 좋아요 취소
       description: |-
         커뮤니티에 등록된 유저의 게시글 좋아요를 취소합니다.
+        
+        API 사용에 필요한 권한(scope)
+        - post.read
+        - post.write
       parameters:
         - in: path
           name: postId
@@ -1150,6 +1183,9 @@ paths:
         커뮤니티에 등록된 유저 게시글의 댓글 목록을 조회합니다.
         
         최근 등록 내림차 순으로 정렬되어 조회됩니다.
+        
+        API 사용에 필요한 권한(scope)
+        - post.read
       parameters:
         - in: path
           name: postId
@@ -1280,6 +1316,10 @@ paths:
       summary: 커뮤니티 게시글 댓글 신고
       description: |-
         커뮤니티에 등록된 유저 게시글의 댓글을 신고합니다.
+        
+        API 사용에 필요한 권한(scope)
+        - post.read
+        - post.write
       parameters:
         - in: path
           name: postId
