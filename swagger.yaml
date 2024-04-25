@@ -1360,8 +1360,6 @@ paths:
 
   /api/v1/notices:
     get:
-      security:
-        - bearerToken: [ ]
       tags:
         - 기타
       summary: 공지사항 조회
