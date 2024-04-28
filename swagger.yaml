@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  version: "1.0.0"
+  version: "1.0.1"
   title: PP REST API Docs
   description: |-
     해당 문서는 PP REST API 명세에 대한 문서입니다.
@@ -1493,27 +1493,6 @@ components:
           type: string
         instance:
           type: string
-        filedErrors:
-          type: array
-          description: 커스텀 에러
-          items:
-            type: object
-            properties:
-              detailMessage:
-                type: string
-                description: 상세 메시지
-              field:
-                type: string
-                description: 유효하지 않은 필드명
-              rejectedValue:
-                type: string
-                description: 유효하지 않은 값
-              bindingFailure:
-                type: string
-                description: 적용 여부
-              code:
-                type: string
-                description: 코드
       required:
         - type
         - title
@@ -1536,12 +1515,6 @@ components:
         status: 400
         detail: Invalid request content.
         instance: /api/v1/example
-        fieldErrors:
-          detailMessage: asd
-          field: name
-          rejectedValue: null
-          bindingFailure: false
-          code: NotBlank
     ProblemDetailError5XXExample:
       value:
         type: about:blank
