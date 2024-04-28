@@ -231,7 +231,7 @@ paths:
                 Oauth2ErrorServerErrorExample:
                   $ref: '#/components/examples/Oauth2ErrorServerErrorExample'
 
-  /api/v1/presigned/upload-urls:
+  /api/v1/presigned-urls/upload:
     post:
       security:
         - bearerToken: [ ]
@@ -268,6 +268,11 @@ paths:
                           파일 업로드 유형
                           - PROFILE_IMAGE
                           - POST_IMAGE
+                      fileName:
+                        type: string
+                        description: |-
+                          파일이름
+                          - s3 객체 이름은 UUID로 업로드됩니다.
                       fileContentLength:
                         type: integer
                         description: |-
@@ -288,13 +293,16 @@ paths:
                             - image/jpeg
                     required:
                       - fileUploadRequestType
+                      - fileName
                       - fileContentLength
                       - fileContentType
                   example:
                     - fileUploadRequestType: PROFILE_IMAGE
+                      fileName: example1
                       fileContentLength: 500000
                       fileContentType: image/png
                     - fileUploadRequestType: POST_IMAGE
+                      fileName: example2
                       fileContentLength: 650000
                       fileContentType: image/jpeg
               required:
@@ -319,6 +327,9 @@ paths:
                             fileUploadId:
                               type: integer
                               description: 파일 업로드 id
+                            fileName:
+                              type: string
+                              description: 요청했던 파일이름
                             presignedUploadUrl:
                               type: string
                               description: 서명된 파일 업로드 url
@@ -327,15 +338,18 @@ paths:
                               description: 파일 url
                           required:
                             - fileUploadId
+                            - fileName
                             - presignedUploadUrl
                             - fileUrl
                         example:
                           - fileUploadId: 1
-                            presignedUploadUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/example.png?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH4aDmFwLW5vcnRoZWFzdC0yIkYwRAIgOF4z5YJLMI1YQsfDsOu3ItBFpvDAMWHNT%2BJFqA2EHzQCICSHWV3QpnyDPwfp6eGWYmrBl5NMZn9JC%2FaOUhMlhv2OKpIDCKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNzMwMzM1NTk0MTg2IgzvG6wQSpimxC7HWRsq5gK%2BszFeBYYK3QvsZZ40%2Fm1EPdSzYWmasXWgjM2879zl7Cp66x%2F8HRa6BCQSsyMdP9gMPn5MifObVLqFS8owu7e4uH68tbfmSF1ipFwr%2BMl3DS5DQUCTaRraoi%2F2PTTEHRHtA1dbE6XfXttkRQYkaEIKvR3X44sMlqI2rKOQtpFU5g5%2BzEG7NQHeIbgPMThPBXT%2Bu8IgqOaKyqaKLTTjjUcCBhoYaToDeOaZbFIElmdLADswM34ID5jCt3jPOGlBX04GI8X%2BXbtzyIeDH2ihmWDejpGv8%2BUx9v%2F%2BHX80PnZkUUyz1f8KjweBETyJHiZTFxxtJ6nG3Y%2Bs0LVgLshHWa5Md1HG11ASlNFT%2BSuKzPfQqiohAzeP%2Ff7CLFUlDQmB2kcNKwGAFgDUmMF%2FNC1ePM%2BiwL%2F6BGtbJu9gbu6PHj0%2FuUGQuKar0xd5azhWxM9bpZ2Gn7YBGbAPwVUsS1YEYr0OMgzNEr9sMK6UwLAGOrQCPN2SL1x7N%2FrRXPUw98if3xLq9iLosA4oPUCGxVzzGUX2L88Fq2l4qJTRo85qI%2Fc%2BEWz7WBufa2XsnMMMh8lXADb1UkLxLEOHr5pIWUroWM0uzGp%2FuvpoMmEFZieKu9cGrC%2FqOFo%2BGL3lN%2B9vZcEb3w2SpeImGDdataWOUB3njXoNhYx8Oyxv87aWhXQjIp96PUhmVaVPOkfMY%2FySz97TqXTxNh7gSW95ch2QJa1xmR%2FXHBKB7HuYEWGODNuEa8PSARBeKpXy7S1WoHgPcCHCzmrVcGMA6H9nfSxnBzwKqR%2FahzbqbEUIa5kXYLwll%2FQAI%2BNKhyFya9HzDl5f9sAXdt1hfQ9dwM2WdDB4mQxnESgPsBe%2F4MtXr%2Btvs8qqD0XLeu35c89wjDOb4osHDJLevfkPvPE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240405T142839Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Credential=ASIA2UC3EY3FFAXNMRH5%2F20240405%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=6e710f43b229be2a5b63e543c9d61b2dbc66bd2b5035b55c207cce060eacd480
-                            fileUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/example.png
+                            fileName: example1
+                            presignedUploadUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/profile_img/0068c1a7-7eba-40c2-926b-3e39747f5d8c?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH4aDmFwLW5vcnRoZWFzdC0yIkYwRAIgOF4z5YJLMI1YQsfDsOu3ItBFpvDAMWHNT%2BJFqA2EHzQCICSHWV3QpnyDPwfp6eGWYmrBl5NMZn9JC%2FaOUhMlhv2OKpIDCKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNzMwMzM1NTk0MTg2IgzvG6wQSpimxC7HWRsq5gK%2BszFeBYYK3QvsZZ40%2Fm1EPdSzYWmasXWgjM2879zl7Cp66x%2F8HRa6BCQSsyMdP9gMPn5MifObVLqFS8owu7e4uH68tbfmSF1ipFwr%2BMl3DS5DQUCTaRraoi%2F2PTTEHRHtA1dbE6XfXttkRQYkaEIKvR3X44sMlqI2rKOQtpFU5g5%2BzEG7NQHeIbgPMThPBXT%2Bu8IgqOaKyqaKLTTjjUcCBhoYaToDeOaZbFIElmdLADswM34ID5jCt3jPOGlBX04GI8X%2BXbtzyIeDH2ihmWDejpGv8%2BUx9v%2F%2BHX80PnZkUUyz1f8KjweBETyJHiZTFxxtJ6nG3Y%2Bs0LVgLshHWa5Md1HG11ASlNFT%2BSuKzPfQqiohAzeP%2Ff7CLFUlDQmB2kcNKwGAFgDUmMF%2FNC1ePM%2BiwL%2F6BGtbJu9gbu6PHj0%2FuUGQuKar0xd5azhWxM9bpZ2Gn7YBGbAPwVUsS1YEYr0OMgzNEr9sMK6UwLAGOrQCPN2SL1x7N%2FrRXPUw98if3xLq9iLosA4oPUCGxVzzGUX2L88Fq2l4qJTRo85qI%2Fc%2BEWz7WBufa2XsnMMMh8lXADb1UkLxLEOHr5pIWUroWM0uzGp%2FuvpoMmEFZieKu9cGrC%2FqOFo%2BGL3lN%2B9vZcEb3w2SpeImGDdataWOUB3njXoNhYx8Oyxv87aWhXQjIp96PUhmVaVPOkfMY%2FySz97TqXTxNh7gSW95ch2QJa1xmR%2FXHBKB7HuYEWGODNuEa8PSARBeKpXy7S1WoHgPcCHCzmrVcGMA6H9nfSxnBzwKqR%2FahzbqbEUIa5kXYLwll%2FQAI%2BNKhyFya9HzDl5f9sAXdt1hfQ9dwM2WdDB4mQxnESgPsBe%2F4MtXr%2Btvs8qqD0XLeu35c89wjDOb4osHDJLevfkPvPE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240405T142839Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Credential=ASIA2UC3EY3FFAXNMRH5%2F20240405%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=6e710f43b229be2a5b63e543c9d61b2dbc66bd2b5035b55c207cce060eacd480
+                            fileUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/profile_img/0068c1a7-7eba-40c2-926b-3e39747f5d8c
                           - fileUploadId: 2
-                            presignedUploadUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/example2.png?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH4aDmFwLW5vcnRoZWFzdC0yIkYwRAIgOF4z5YJLMI1YQsfDsOu3ItBFpvDAMWHNT%2BJFqA2EHzQCICSHWV3QpnyDPwfp6eGWYmrBl5NMZn9JC%2FaOUhMlhv2OKpIDCKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNzMwMzM1NTk0MTg2IgzvG6wQSpimxC7HWRsq5gK%2BszFeBYYK3QvsZZ40%2Fm1EPdSzYWmasXWgjM2879zl7Cp66x%2F8HRa6BCQSsyMdP9gMPn5MifObVLqFS8owu7e4uH68tbfmSF1ipFwr%2BMl3DS5DQUCTaRraoi%2F2PTTEHRHtA1dbE6XfXttkRQYkaEIKvR3X44sMlqI2rKOQtpFU5g5%2BzEG7NQHeIbgPMThPBXT%2Bu8IgqOaKyqaKLTTjjUcCBhoYaToDeOaZbFIElmdLADswM34ID5jCt3jPOGlBX04GI8X%2BXbtzyIeDH2ihmWDejpGv8%2BUx9v%2F%2BHX80PnZkUUyz1f8KjweBETyJHiZTFxxtJ6nG3Y%2Bs0LVgLshHWa5Md1HG11ASlNFT%2BSuKzPfQqiohAzeP%2Ff7CLFUlDQmB2kcNKwGAFgDUmMF%2FNC1ePM%2BiwL%2F6BGtbJu9gbu6PHj0%2FuUGQuKar0xd5azhWxM9bpZ2Gn7YBGbAPwVUsS1YEYr0OMgzNEr9sMK6UwLAGOrQCPN2SL1x7N%2FrRXPUw98if3xLq9iLosA4oPUCGxVzzGUX2L88Fq2l4qJTRo85qI%2Fc%2BEWz7WBufa2XsnMMMh8lXADb1UkLxLEOHr5pIWUroWM0uzGp%2FuvpoMmEFZieKu9cGrC%2FqOFo%2BGL3lN%2B9vZcEb3w2SpeImGDdataWOUB3njXoNhYx8Oyxv87aWhXQjIp96PUhmVaVPOkfMY%2FySz97TqXTxNh7gSW95ch2QJa1xmR%2FXHBKB7HuYEWGODNuEa8PSARBeKpXy7S1WoHgPcCHCzmrVcGMA6H9nfSxnBzwKqR%2FahzbqbEUIa5kXYLwll%2FQAI%2BNKhyFya9HzDl5f9sAXdt1hfQ9dwM2WdDB4mQxnESgPsBe%2F4MtXr%2Btvs8qqD0XLeu35c89wjDOb4osHDJLevfkPvPE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240405T142839Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Credential=ASIA2UC3EY3FFAXNMRH5%2F20240405%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=6e710f43b229be2a5b63e543c9d61b2dbc66bd2b5035b55c207cce060eacd480
-                            fileUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/example2.png
+                            fileName: example2
+                            presignedUploadUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/post_img/1124c1a7-7eba-40c2-356b-3e39747f5d8c?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH4aDmFwLW5vcnRoZWFzdC0yIkYwRAIgOF4z5YJLMI1YQsfDsOu3ItBFpvDAMWHNT%2BJFqA2EHzQCICSHWV3QpnyDPwfp6eGWYmrBl5NMZn9JC%2FaOUhMlhv2OKpIDCKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNzMwMzM1NTk0MTg2IgzvG6wQSpimxC7HWRsq5gK%2BszFeBYYK3QvsZZ40%2Fm1EPdSzYWmasXWgjM2879zl7Cp66x%2F8HRa6BCQSsyMdP9gMPn5MifObVLqFS8owu7e4uH68tbfmSF1ipFwr%2BMl3DS5DQUCTaRraoi%2F2PTTEHRHtA1dbE6XfXttkRQYkaEIKvR3X44sMlqI2rKOQtpFU5g5%2BzEG7NQHeIbgPMThPBXT%2Bu8IgqOaKyqaKLTTjjUcCBhoYaToDeOaZbFIElmdLADswM34ID5jCt3jPOGlBX04GI8X%2BXbtzyIeDH2ihmWDejpGv8%2BUx9v%2F%2BHX80PnZkUUyz1f8KjweBETyJHiZTFxxtJ6nG3Y%2Bs0LVgLshHWa5Md1HG11ASlNFT%2BSuKzPfQqiohAzeP%2Ff7CLFUlDQmB2kcNKwGAFgDUmMF%2FNC1ePM%2BiwL%2F6BGtbJu9gbu6PHj0%2FuUGQuKar0xd5azhWxM9bpZ2Gn7YBGbAPwVUsS1YEYr0OMgzNEr9sMK6UwLAGOrQCPN2SL1x7N%2FrRXPUw98if3xLq9iLosA4oPUCGxVzzGUX2L88Fq2l4qJTRo85qI%2Fc%2BEWz7WBufa2XsnMMMh8lXADb1UkLxLEOHr5pIWUroWM0uzGp%2FuvpoMmEFZieKu9cGrC%2FqOFo%2BGL3lN%2B9vZcEb3w2SpeImGDdataWOUB3njXoNhYx8Oyxv87aWhXQjIp96PUhmVaVPOkfMY%2FySz97TqXTxNh7gSW95ch2QJa1xmR%2FXHBKB7HuYEWGODNuEa8PSARBeKpXy7S1WoHgPcCHCzmrVcGMA6H9nfSxnBzwKqR%2FahzbqbEUIa5kXYLwll%2FQAI%2BNKhyFya9HzDl5f9sAXdt1hfQ9dwM2WdDB4mQxnESgPsBe%2F4MtXr%2Btvs8qqD0XLeu35c89wjDOb4osHDJLevfkPvPE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240405T142839Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Credential=ASIA2UC3EY3FFAXNMRH5%2F20240405%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=6e710f43b229be2a5b63e543c9d61b2dbc66bd2b5035b55c207cce060eacd480
+                            fileUrl: https://pp-public-bucket.s3.ap-northeast-2.amazonaws.com/post_img/1124c1a7-7eba-40c2-356b-3e39747f5d8c
                     required:
                       - presignedUploadUrlResponses
                 required:
