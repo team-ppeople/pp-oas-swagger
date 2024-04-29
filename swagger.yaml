@@ -262,7 +262,7 @@ paths:
                   items:
                     type: object
                     properties:
-                      fileUploadRequestType:
+                      fileType:
                         type: string
                         description: |-
                           파일 업로드 유형
@@ -292,16 +292,16 @@ paths:
                             - image/png
                             - image/jpeg
                     required:
-                      - fileUploadRequestType
+                      - uploadFileType
                       - fileName
                       - fileContentLength
                       - fileContentType
                   example:
-                    - fileUploadRequestType: PROFILE_IMAGE
+                    - fileType: PROFILE_IMAGE
                       fileName: example1
                       fileContentLength: 500000
                       fileContentType: image/png
-                    - fileUploadRequestType: POST_IMAGE
+                    - fileType: POST_IMAGE
                       fileName: example2
                       fileContentLength: 650000
                       fileContentType: image/jpeg
