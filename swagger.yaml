@@ -659,7 +659,6 @@ paths:
         최근 등록 내림차 순으로 정렬되어 조회됩니다.
         
         API 사용에 필요한 권한(scope)
-        - user.read
         - post.read
       parameters:
         - in: path
@@ -1064,7 +1063,6 @@ paths:
         커뮤니티에 등록된 유저의 게시글을 신고합니다.
         
         API 사용에 필요한 권한(scope)
-        - post.read
         - post.write
       parameters:
         - in: path
@@ -1106,7 +1104,6 @@ paths:
         커뮤니티에 등록된 유저의 게시글을 좋아합니다.
         
         API 사용에 필요한 권한(scope)
-        - post.read
         - post.write
       parameters:
         - in: path
@@ -1148,7 +1145,6 @@ paths:
         커뮤니티에 등록된 유저의 게시글 좋아요를 취소합니다.
         
         API 사용에 필요한 권한(scope)
-        - post.read
         - post.write
       parameters:
         - in: path
@@ -1329,7 +1325,6 @@ paths:
         커뮤니티에 등록된 유저 게시글의 댓글을 신고합니다.
         
         API 사용에 필요한 권한(scope)
-        - post.read
         - post.write
       parameters:
         - in: path
