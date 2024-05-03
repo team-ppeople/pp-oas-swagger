@@ -1315,7 +1315,7 @@ paths:
                 RFC7807Error5XXExample:
                   $ref: '#/components/examples/ProblemDetailError5XXExample'
 
-  /api/v1/posts/{postId}/comments/{commentId}/report:
+  /api/v1/comments/{commentId}/report:
     get:
       security:
         - bearerToken: [ ]
@@ -1328,12 +1328,6 @@ paths:
         API 사용에 필요한 권한(scope)
         - post.write
       parameters:
-        - in: path
-          name: postId
-          schema:
-            type: integer
-          required: true
-          description: 게시글 id
         - in: path
           name: commentId
           schema:
