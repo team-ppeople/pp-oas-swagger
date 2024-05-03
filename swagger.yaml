@@ -1321,6 +1321,7 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
+        - 배포된 API
       summary: 커뮤니티 게시글 댓글 신고
       description: |-
         커뮤니티에 등록된 유저 게시글의 댓글을 신고합니다.
