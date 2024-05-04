@@ -1225,19 +1225,33 @@ paths:
                     type: object
                     properties:
                       comments:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                            description: 댓글 id
-                            example: 1
-                          content:
-                            type: string
-                            description: 내용
-                            example: 바다 거북이 댇은 바빠서 안왔다고 합니다.
-                        required:
-                          - id
-                          - content
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              description: 댓글 id
+                            content:
+                              type: string
+                              description: 내용
+                            createDate:
+                              type: string
+                              description: 작성일
+                          required:
+                            - id
+                            - content
+                            - createDate
+                        example:
+                          - id: 3
+                            content: 바다 거북이 댇은 바빠서 안왔다고 합니다.
+                            createDate: 2024.05.02
+                          - id: 2
+                            content: 안녕하세요! 반갑습니다~
+                            createDate: 2024.05.01
+                          - id: 1
+                            content: 제가 첫 댓글입니다 ^^
+                            createDate: 2024.04.29
                     required:
                       - comments
                 required:
