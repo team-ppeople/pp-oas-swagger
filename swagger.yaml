@@ -292,7 +292,7 @@ paths:
                             - image/png
                             - image/jpeg
                     required:
-                      - uploadFileType
+                      - fileType
                       - fileName
                       - fileContentLength
                       - fileContentType
