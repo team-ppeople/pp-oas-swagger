@@ -940,6 +940,7 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
+        - 배포된 API
       summary: 커뮤니티 게시글 상세내용 조회
       description: |-
         커뮤니티에 등록된 유저의 게시글 상세내용을 조회합니다.
