@@ -237,6 +237,7 @@ paths:
         - bearerToken: [ ]
       tags:
         - 파일 업로드
+        - 배포된 API
       summary: 파일 업로드를 위한 서명된 URL 생성
       description: |-
         파일 업로드를 위한 서명된 URL을 생성합니다.
