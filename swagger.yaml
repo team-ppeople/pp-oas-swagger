@@ -1117,6 +1117,7 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
+        - 배포된 API
       summary: 커뮤니티 게시글 좋아요
       description: |-
         커뮤니티에 등록된 유저의 게시글을 좋아합니다.
@@ -1158,6 +1159,7 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
+        - 배포된 API
       summary: 커뮤니티 게시글 좋아요 취소
       description: |-
         커뮤니티에 등록된 유저의 게시글 좋아요를 취소합니다.
