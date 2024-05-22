@@ -1350,7 +1350,7 @@ paths:
                   $ref: '#/components/examples/ProblemDetailError5XXExample'
 
   /api/v1/comments/{commentId}/report:
-    get:
+    post:
       security:
         - bearerToken: [ ]
       tags:
