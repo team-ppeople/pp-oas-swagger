@@ -6,8 +6,6 @@ info:
     해당 문서는 PP REST API 명세에 대한 문서입니다.
 
 tags:
-  - name: 배포된 API
-    description: 서버에 배포되어 사용 및 테스트 가능한 API
   - name: 인증
     description: 인증 API
   - name: 파일 업로드
@@ -24,7 +22,6 @@ paths:
     post:
       tags:
         - 인증
-        - 배포된 API
       summary: 토큰 발급
       description: |-
         API 사용을 위한 엑세스 토큰과 엑세스 토큰을 갱신할 수 있는 리프레시 토큰을 발급합니다.
@@ -180,7 +177,6 @@ paths:
     post:
       tags:
         - 인증
-        - 배포된 API
       summary: 토큰 무효화
       description: |-
         PP 서버 API 사용을 위한 엑세스 토큰 또는 리프레시 토큰을 무효화합니다.
@@ -237,7 +233,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 파일 업로드
-        - 배포된 API
       summary: 파일 업로드를 위한 서명된 URL 생성
       description: |-
         파일 업로드를 위한 서명된 URL을 생성합니다.
@@ -378,7 +373,6 @@ paths:
     post:
       tags:
         - 유저
-        - 배포된 API
       summary: Oauth 로그인 회원 등록 여부 확인
       description: |-
         Oauth 로그인 회원의 등록 여부를 확인합니다.
@@ -452,7 +446,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 유저
-        - 배포된 API
       summary: 유저 정보 수정
       description: |-
         유저 정보를 수정합니다.
@@ -546,7 +539,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 유저
-        - 배포된 API
       summary: 유저 프로필 조회
       description: |-
         유저의 프로필 정보를 조회합니다.
@@ -666,7 +658,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 유저
-        - 배포된 API
       summary: 유저 커뮤니티 게시글 목록 조회
       description: |-
         유저가 등록한 커뮤니티 게시글을 조회합니다.
@@ -772,7 +763,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
-        - 배포된 API
       summary: 커뮤니티 게시글 목록 조회
       description: |-
         커뮤니티에 등록된 유저의 게시글 목록을 조회합니다.
@@ -872,7 +862,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
-        - 배포된 API
       summary: 커뮤니티 게시글 작성
       description: |-
         커뮤니티에 등록될 유저의 게시글을 작성합니다.
@@ -941,7 +930,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
-        - 배포된 API
       summary: 커뮤니티 게시글 상세내용 조회
       description: |-
         커뮤니티에 등록된 유저의 게시글 상세내용을 조회합니다.
@@ -1075,7 +1063,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
-        - 배포된 API
       summary: 커뮤니티 게시글 신고
       description: |-
         커뮤니티에 등록된 유저의 게시글을 신고합니다.
@@ -1117,7 +1104,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
-        - 배포된 API
       summary: 커뮤니티 게시글 좋아요
       description: |-
         커뮤니티에 등록된 유저의 게시글을 좋아합니다.
@@ -1159,7 +1145,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
-        - 배포된 API
       summary: 커뮤니티 게시글 좋아요 취소
       description: |-
         커뮤니티에 등록된 유저의 게시글 좋아요를 취소합니다.
@@ -1201,7 +1186,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
-        - 배포된 API
       summary: 커뮤니티 게시글 댓글 목록 조회
       description: |-
         커뮤니티에 등록된 유저 게시글의 댓글 목록을 조회합니다.
@@ -1300,7 +1284,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
-        - 배포된 API
       summary: 커뮤니티 게시글 댓글 작성
       description: |-
         커뮤니티에 등록된 유저 게시글에 댓글을 작성합니다.
@@ -1355,7 +1338,6 @@ paths:
         - bearerToken: [ ]
       tags:
         - 커뮤니티
-        - 배포된 API
       summary: 커뮤니티 게시글 댓글 신고
       description: |-
         커뮤니티에 등록된 유저 게시글의 댓글을 신고합니다.
@@ -1395,7 +1377,6 @@ paths:
     get:
       tags:
         - 기타
-        - 배포된 API
       summary: 공지사항 조회
       description: |-
         공지사항을 목록을 조회합니다.
