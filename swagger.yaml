@@ -957,26 +957,6 @@ paths:
                       post:
                         type: object
                         properties:
-                          createdUser:
-                            type: object
-                            description: 게시글 작성자
-                            properties:
-                              id:
-                                type: integer
-                                description: 유저 id
-                                example: 1
-                              nickname:
-                                type: string
-                                description: 유저 닉네임
-                                example: sinbom
-                              profileImageUrl:
-                                type: integer
-                                description: 프로필 이미지 url
-                                example: https://avatars.githubusercontent.com/u/52724515
-                            required:
-                              - id
-                              - nickname
-                              - profileImageUrl
                           id:
                             type: integer
                             description: 게시글 id
@@ -1024,7 +1004,28 @@ paths:
                             required:
                               - thumbsUpped
                               - reported
+                          createdUser:
+                            type: object
+                            description: 게시글 작성자
+                            properties:
+                              id:
+                                type: integer
+                                description: 유저 id
+                                example: 1
+                              nickname:
+                                type: string
+                                description: 유저 닉네임
+                                example: sinbom
+                              profileImageUrl:
+                                type: integer
+                                description: 프로필 이미지 url
+                                example: https://avatars.githubusercontent.com/u/52724515
+                            required:
+                              - id
+                              - nickname
+                              - profileImageUrl
                         required:
+                          - createdUser
                           - user
                           - id
                           - postImageUrls
@@ -1242,20 +1243,53 @@ paths:
                             createDate:
                               type: string
                               description: 작성일
+                            createdUser:
+                              type: object
+                              description: 게시글 작성자
+                              properties:
+                                id:
+                                  type: integer
+                                  description: 유저 id
+                                  example: 1
+                                nickname:
+                                  type: string
+                                  description: 유저 닉네임
+                                  example: sinbom
+                                profileImageUrl:
+                                  type: integer
+                                  description: 프로필 이미지 url
+                                  example: https://avatars.githubusercontent.com/u/52724515
+                              required:
+                                - id
+                                - nickname
+                                - profileImageUrl
                           required:
                             - id
                             - content
                             - createDate
+                            - createdUser
                         example:
                           - id: 3
                             content: 바다 거북이 댇은 바빠서 안왔다고 합니다.
                             createDate: 2024.05.02
+                            createdUser:
+                              id: 1
+                              nickname: 바다거북맘
+                              profileImageUrl: https://avatars.githubusercontent.com/u/52724515
                           - id: 2
                             content: 안녕하세요! 반갑습니다~
                             createDate: 2024.05.01
+                            createdUser:
+                              id: 1
+                              nickname: 바다거북맘
+                              profileImageUrl: https://avatars.githubusercontent.com/u/52724515
                           - id: 1
                             content: 제가 첫 댓글입니다 ^^
                             createDate: 2024.04.29
+                            createdUser:
+                              id: 1
+                              nickname: 바다거북맘
+                              profileImageUrl: https://avatars.githubusercontent.com/u/52724515
                     required:
                       - comments
                 required:
