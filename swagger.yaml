@@ -504,6 +504,10 @@ paths:
       summary: 유저 탈퇴
       description: |-
         유저 정보를 삭제합니다.
+        
+        API 사용에 필요한 권한(scope)
+        - user.read
+        - user.write
       parameters:
         - in: path
           name: userId
@@ -1068,6 +1072,7 @@ paths:
 
         API 사용에 필요한 권한(scope)
         - post.read
+        - post.write
       parameters:
         - in: path
           name: postId
