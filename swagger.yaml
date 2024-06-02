@@ -770,7 +770,7 @@ paths:
         최근 등록 내림차 순으로 정렬되어 조회됩니다.
         
         API 사용에 필요한 권한(scope)
-        - post.read
+        - post.write
       parameters:
         - in: query
           name: limit
@@ -1039,6 +1039,45 @@ paths:
                       - post
                 required:
                   - data
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
+    delete:
+      security:
+        - bearerToken: [ ]
+      tags:
+        - 커뮤니티
+      summary: 커뮤니티 게시글 삭제
+      description: |-
+        커뮤니티에 등록된 유저의 게시글을 삭제합니다.
+
+        API 사용에 필요한 권한(scope)
+        - post.read
+      parameters:
+        - in: path
+          name: postId
+          schema:
+            type: integer
+          required: true
+          description: 게시글 id
+      responses:
+        200:
+          description: '200'
         4XX:
           description: ''
           content:
