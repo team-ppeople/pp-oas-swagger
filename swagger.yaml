@@ -478,6 +478,10 @@ paths:
       responses:
         200:
           description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
         4XX:
           description: ''
           content:
@@ -518,6 +522,10 @@ paths:
       responses:
         200:
           description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
         4XX:
           description: ''
           content:
@@ -903,7 +911,11 @@ paths:
                 - postImageFileUploadIds
       responses:
         201:
-          description: '201'
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
           headers:
             Location:
               schema:
@@ -949,7 +961,7 @@ paths:
           description: 게시글 id
       responses:
         200:
-          description: '200'
+          description: ''
           content:
             application/json:
               schema:
@@ -1082,7 +1094,11 @@ paths:
           description: 게시글 id
       responses:
         200:
-          description: '200'
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
         4XX:
           description: ''
           content:
@@ -1123,7 +1139,11 @@ paths:
           description: 게시글 id
       responses:
         200:
-          description: '200'
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
         4XX:
           description: ''
           content:
@@ -1164,7 +1184,11 @@ paths:
           description: 게시글 id
       responses:
         200:
-          description: '200'
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
         4XX:
           description: ''
           content:
@@ -1205,7 +1229,11 @@ paths:
           description: 게시글 id
       responses:
         200:
-          description: '200'
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
         4XX:
           description: ''
           content:
@@ -1264,7 +1292,7 @@ paths:
             - 만약 100을 입력했다면 다음 조회는 99부터 입니다.
       responses:
         200:
-          description: '200'
+          description: ''
           content:
             application/json:
               schema:
@@ -1390,7 +1418,11 @@ paths:
                 - content
       responses:
         200:
-          description: '200'
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
         4XX:
           description: ''
           content:
@@ -1431,7 +1463,11 @@ paths:
           description: 댓글 id
       responses:
         200:
-          description: '200'
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
         4XX:
           description: ''
           content:
@@ -1479,7 +1515,7 @@ paths:
             - 만약 100을 입력했다면 다음 조회는 99부터 입니다.
       responses:
         200:
-          description: '200'
+          description: ''
           content:
             application/json:
               schema:
@@ -1554,6 +1590,13 @@ components:
       description: JWT 서명 토큰(access_token)
 
   schemas:
+    DefaultResponse:
+      type: object
+      properties:
+        data:
+          type: object
+      required:
+        - data
     Oauth2ErrorResponse:
       type: object
       externalDocs:
