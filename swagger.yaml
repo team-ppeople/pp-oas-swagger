@@ -618,7 +618,6 @@ paths:
                                   description: 작성일
                               required:
                                 - id
-                                - thumbnailUrl
                                 - title
                                 - createDate
                             example:
@@ -627,7 +626,7 @@ paths:
                                 title: 바다 거북이 본 날
                                 createDate: 2024.03.30
                               - id: 2
-                                thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
+                                thumbnailUrl: null
                                 title: 오늘 우리집에 햄스터를...
                                 createDate: 2024.03.30
                               - id: 1
@@ -730,7 +729,6 @@ paths:
                               type: string
                           required:
                             - id
-                            - thumbnailUrl
                             - title
                             - createDate
                         example:
@@ -739,7 +737,7 @@ paths:
                             title: 바다 거북이 본 날
                             createDate: 2024.03.30
                           - id: 2
-                            thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
+                            thumbnailUrl: null
                             title: 오늘 우리집에 햄스터를...
                             createDate: 2024.03.30
                           - id: 1
@@ -830,7 +828,6 @@ paths:
                               description: 작성일
                           required:
                             - id
-                            - thumbnailUrl
                             - title
                             - createDate
                         example:
@@ -839,7 +836,7 @@ paths:
                             title: 바다 거북이 본 날
                             createDate: 2024.03.30
                           - id: 2
-                            thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
+                            thumbnailUrl: null
                             title: 오늘 우리집에 햄스터를...
                             createDate: 2024.03.30
                           - id: 1
@@ -899,7 +896,6 @@ paths:
                   type: array
                   description: |-
                     게시글 파일 업로드 id
-                    - 최소 1개
                     - 최대 10개
                     - 첫 번째 이미지가 썸네일 이미지로 선정됩니다.
                   items:
@@ -908,7 +904,6 @@ paths:
               required:
                 - title
                 - content
-                - postImageFileUploadIds
       responses:
         201:
           description: ''
@@ -982,6 +977,7 @@ paths:
                             description: |-
                               게시글 이미지 url
                               - 첫 번째 이미지가 썸네일 이미지로 선정됩니다.
+                              - 업로드한 이미지가 없으면 빈 리스트로 응답합니다.
                             items:
                               type: string
                             example: [https://avatars.githubusercontent.com/u/52724515, https://avatars.githubusercontent.com/u/52724515]
