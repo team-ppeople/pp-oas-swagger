@@ -767,6 +767,98 @@ paths:
                 RFC7807Error5XXExample:
                   $ref: '#/components/examples/ProblemDetailError5XXExample'
 
+  /api/v1/users/{userId}/block:
+    post:
+      security:
+        - bearerToken: [ ]
+      tags:
+        - 유저
+      summary: 유저 차단
+      description: |-
+        해당 유저를 차단합니다.
+
+        API 사용에 필요한 권한(scope)
+        - user.read
+        - user.write
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: integer
+          required: true
+          description: 유저 id
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
+
+  /api/v1/users/{userId}/unblock:
+    post:
+      security:
+        - bearerToken: [ ]
+      tags:
+        - 유저
+      summary: 유저 차단 해제
+      description: |-
+        차단한 유저를 차단 해제합니다.
+
+        API 사용에 필요한 권한(scope)
+        - user.read
+        - user.write
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: integer
+          required: true
+          description: 유저 id
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultResponse'
+        4XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error4XXExample:
+                  $ref: '#/components/examples/ProblemDetailError4XXExample'
+        5XX:
+          description: ''
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailErrorResponse'
+              examples:
+                RFC7807Error5XXExample:
+                  $ref: '#/components/examples/ProblemDetailError5XXExample'
+
   /api/v1/posts:
     get:
       security:
