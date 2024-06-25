@@ -6,6 +6,8 @@ info:
     해당 문서는 PP REST API 명세에 대한 문서입니다.
 
 tags:
+  - name: 🔨구현중인 API
+    description: 문서만 업데이트 되었고 아직 구현중입니다.
   - name: 인증
     description: 인증 API
   - name: 파일 업로드
@@ -773,6 +775,7 @@ paths:
         - bearerToken: [ ]
       tags:
         - 유저
+        - 🔨구현중인 API
       summary: 유저 차단
       description: |-
         해당 유저를 차단합니다.
@@ -819,6 +822,7 @@ paths:
         - bearerToken: [ ]
       tags:
         - 유저
+        - 🔨구현중인 API
       summary: 유저 차단 해제
       description: |-
         차단한 유저를 차단 해제합니다.
