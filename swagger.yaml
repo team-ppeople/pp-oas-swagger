@@ -626,15 +626,15 @@ paths:
                               - id: 3
                                 thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                                 title: 바다 거북이 본 날
-                                createDate: 2024.03.30
+                                createDate: 2024.03.30 19:34:02
                               - id: 2
                                 thumbnailUrl: null
                                 title: 오늘 우리집에 햄스터를...
-                                createDate: 2024.03.30
+                                createDate: 2024.03.30 16:12:37
                               - id: 1
                                 thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                                 title: 문서 적는게 원래 이렇게 힘든...
-                                createDate: 2024.02.12
+                                createDate: 2024.02.12 15:32:00
                         required:
                           - id
                           - nickname
@@ -737,15 +737,15 @@ paths:
                           - id: 3
                             thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                             title: 바다 거북이 본 날
-                            createDate: 2024.03.30
+                            createDate: 2024.03.30 19:34:02
                           - id: 2
                             thumbnailUrl: null
                             title: 오늘 우리집에 햄스터를...
-                            createDate: 2024.03.30
+                            createDate: 2024.03.30 16:12:37
                           - id: 1
                             thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                             title: 문서 적는게 원래 이렇게 힘든...
-                            createDate: 2024.02.12
+                            createDate: 2024.02.12 15:32:00
                     required:
                       - posts
                 required:
@@ -930,15 +930,15 @@ paths:
                           - id: 3
                             thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                             title: 바다 거북이 본 날
-                            createDate: 2024.03.30
+                            createDate: 2024.03.30 19:34:02
                           - id: 2
                             thumbnailUrl: null
                             title: 오늘 우리집에 햄스터를...
-                            createDate: 2024.03.30
+                            createDate: 2024.03.30 16:12:37
                           - id: 1
                             thumbnailUrl: https://avatars.githubusercontent.com/u/52724515
                             title: 문서 적는게 원래 이렇게 힘든...
-                            createDate: 2024.02.12
+                            createDate: 2024.02.12 15:32:00
                     required:
                       - posts
                 required:
@@ -1088,7 +1088,7 @@ paths:
                           createDate:
                             type: string
                             description: 작성일
-                            example: 2024.03.30
+                            example: 2024.03.30 19:34:02
                           thumbsUpCount:
                             type: integer
                             description: 받은 좋아요 수
@@ -1435,21 +1435,21 @@ paths:
                         example:
                           - id: 3
                             content: 바다 거북이 댇은 바빠서 안왔다고 합니다.
-                            createDate: 2024.05.02
+                            createDate: 2024.05.02 19:34:02
                             createdUser:
                               id: 1
                               nickname: 바다거북맘
                               profileImageUrl: https://avatars.githubusercontent.com/u/52724515
                           - id: 2
                             content: 안녕하세요! 반갑습니다~
-                            createDate: 2024.05.01
+                            createDate: 2024.05.01 16:12:37
                             createdUser:
                               id: 1
                               nickname: 바다거북맘
                               profileImageUrl: https://avatars.githubusercontent.com/u/52724515
                           - id: 1
                             content: 제가 첫 댓글입니다 ^^
-                            createDate: 2024.04.29
+                            createDate: 2024.04.29 15:32:00
                             createdUser:
                               id: 1
                               nickname: 바다거북맘
