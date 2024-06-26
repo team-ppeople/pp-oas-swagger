@@ -1740,14 +1740,14 @@ components:
         type: about:blank
         title: Bad Request
         status: 400
-        detail: Invalid request content.
+        detail: 잘못된 요청이에요
         instance: /api/v1/example
     ProblemDetailError5XXExample:
       value:
         type: about:blank
         title: Internal Server Error
         status: 500
-        detail: Internal Server Error
+        detail: 서비스에 문제가 발생했어요. 잠시 후 다시 시도해 주세요
         instance: /api/v1/example
 
 servers:
