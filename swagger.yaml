@@ -601,8 +601,15 @@ paths:
                             type: integer
                             description: 받은 좋아요 수
                             example: 1
+                          isBlocked:
+                            type: boolean
+                            description: 차단 여부 (아직 적용 및 배포되지 않았습니다!)
+                            example: false
                           posts:
                             type: array
+                            description: |-
+                              유저가 작성한 게시글
+                              - 차단된 경우는 빈 배열로 응답합니다.
                             items:
                               type: object
                               properties:
@@ -641,6 +648,7 @@ paths:
                           - profileImageUrl
                           - postCount
                           - thumbsUpCount
+                          - isBlocked
                           - posts
                     required:
                       - user
